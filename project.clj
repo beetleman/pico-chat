@@ -26,6 +26,7 @@
                  [mount "0.1.10"]
                  [cprop "0.1.8"]
                  [com.taoensso/sente "1.9.0-RC1"]
+                 [buddy "1.0.0"]
                  [org.clojure/tools.cli "0.3.5"]
                  [luminus-nrepl "0.1.4"]
                  [org.webjars/webjars-locator-jboss-vfs "0.1.0"]
