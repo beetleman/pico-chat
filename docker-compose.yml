@@ -3,7 +3,9 @@ app:
   ports:
     - "3000:3000"
   environment:
-    - RETHINKDB_HOST=rethinkdb
+    - RETHINK_HOST=rethinkdb
+    - RETHINK_PORT=28015
+    - RETHINK_DB="pico-chat"
   links:
     - rethinkdb
 
