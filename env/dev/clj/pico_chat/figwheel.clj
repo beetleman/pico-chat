@@ -7,6 +7,9 @@
 (defn stop-fw []
   (ra/stop-figwheel!))
 
+(defn restart-fw []
+  (stop-fw)
+  (start-fw))
+
 (defn cljs []
   (ra/cljs-repl))
-

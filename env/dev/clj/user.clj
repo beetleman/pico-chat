@@ -1,6 +1,6 @@
 (ns user
   (:require [mount.core :as mount]
-            [pico-chat.figwheel :refer [start-fw stop-fw cljs]]
+            [pico-chat.figwheel :refer [start-fw stop-fw restart-fw cljs]]
             pico-chat.core))
 
 (defn start []
@@ -13,4 +13,6 @@
   (stop)
   (start))
 
-
+(defn restart-all []
+  (restart)
+  (restart-fw))
