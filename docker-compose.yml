@@ -1,0 +1,13 @@
+app:
+  build: .
+  ports:
+    - "3000:3000"
+  environment:
+    - RETHINKDB_HOST=rethinkdb
+  links:
+    - rethinkdb
+
+rethinkdb:
+  image: rethinkdb:2.3.4
+  volumes:
+    - ./.volumes/data:/data
