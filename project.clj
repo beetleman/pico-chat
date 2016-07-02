@@ -26,6 +26,7 @@
                  [mount "0.1.10"]
                  [cprop "0.1.8"]
                  [com.taoensso/sente "1.9.0-RC1"]
+                 [com.apa512/rethinkdb "0.15.24"]
                  [buddy "1.0.0"]
                  [org.clojure/tools.cli "0.3.5"]
                  [luminus-nrepl "0.1.4"]
