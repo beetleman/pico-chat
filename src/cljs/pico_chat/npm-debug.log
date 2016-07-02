@@ -1,0 +1,28 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/share/atom/resources/app/apm/bin/node',
+1 verbose cli   '/usr/share/atom/resources/app/apm/node_modules/npm/bin/npm-cli.js',
+1 verbose cli   '--globalconfig',
+1 verbose cli   '/home/beetleman/.atom/.apm/.apmrc',
+1 verbose cli   '--userconfig',
+1 verbose cli   '/home/beetleman/.atom/.apmrc',
+1 verbose cli   'install',
+1 verbose cli   '--target=0.34.5',
+1 verbose cli   '--arch=x64' ]
+2 info using npm@2.13.3
+3 info using node@v0.10.42
+4 verbose node symlink /usr/share/atom/resources/app/apm/bin/node
+5 verbose readDependencies loading dependencies from /home/beetleman/Projects/house-of-1000-developers/src/cljs/house_of_1000_developers/package.json
+6 error install Couldn't read dependencies
+7 verbose stack Error: ENOENT, open '/home/beetleman/Projects/house-of-1000-developers/src/cljs/house_of_1000_developers/package.json'
+8 verbose cwd /home/beetleman/Projects/house-of-1000-developers/src/cljs/house_of_1000_developers
+9 error Linux 4.4.9-300.fc23.x86_64
+10 error argv "/usr/share/atom/resources/app/apm/bin/node" "/usr/share/atom/resources/app/apm/node_modules/npm/bin/npm-cli.js" "--globalconfig" "/home/beetleman/.atom/.apm/.apmrc" "--userconfig" "/home/beetleman/.atom/.apmrc" "install" "--target=0.34.5" "--arch=x64"
+11 error node v0.10.42
+12 error npm  v2.13.3
+13 error path /home/beetleman/Projects/house-of-1000-developers/src/cljs/house_of_1000_developers/package.json
+14 error code ENOPACKAGEJSON
+15 error errno 34
+16 error package.json ENOENT, open '/home/beetleman/Projects/house-of-1000-developers/src/cljs/house_of_1000_developers/package.json'
+16 error package.json This is most likely not a problem with npm itself.
+16 error package.json npm can't find a package.json file in your current directory.
+17 verbose exit [ 34, true ]

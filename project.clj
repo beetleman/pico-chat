@@ -8,6 +8,7 @@
                  [secretary "1.2.3"]
                  [reagent-utils "0.1.9"]
                  [reagent "0.6.0-rc"]
+                 [re-frame "0.7.0"]
                  [org.clojure/clojurescript "1.9.92" :scope "provided"]
                  [org.clojure/clojure "1.8.0"]
                  [org.clojure/core.async "0.2.385"]
