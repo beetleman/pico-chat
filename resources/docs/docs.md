@@ -1,6 +1,3 @@
-
-<div class="bs-callout bs-callout-danger">
-
 ### SassC libsass command-line compiler is required
 
 You must have the SassC command-line compiler installed to use this feature.
@@ -40,7 +37,6 @@ Because lein-sassc requires a binary to compile Sass, it often won't work on pla
 
 from project.clj.
 
-</div>
 
 ### Managing Your Middleware
 

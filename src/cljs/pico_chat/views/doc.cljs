@@ -9,14 +9,14 @@
     (fn []
       (dispatch [:doc-request])
       [:div.container
-       [:div.jumbotron
+       [:div.card-panel
         [:h1 "Welcome to pico-chat"]
-        [:p [:a.btn.btn-primary.btn-lg {:href "https://github.com/beetleman/pico-chat"}
+        [:p [:a.btn {:href "https://github.com/beetleman/pico-chat"}
              "Learn more »"]]]
        [:div.row
-        [:div.col-md-12
+        [:div.col.m12
          [:h2 "Welcome to ClojureScript"]]]
        [:div.row
-        [:div.col-md-12
+        [:div.col.m12
          [:div {:dangerouslySetInnerHTML
                 {:__html @doc-html}}]]]])))

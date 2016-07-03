@@ -8,8 +8,8 @@
     (fn []
       [:div.container
        [:div.row
-        [:div.col-md-12
+        [:div.mol.m12
          "This is the story of pico-chat... work in progress"]]
        [:div.row
-        [:div.col-md-12
+        [:div.mol.m12
          [:p "Version: " (apply str (interpose "." @version))]]]])))
