@@ -7,11 +7,13 @@
             [goog.history.EventType :as HistoryEventType]
             [pico-chat.subs]
             [pico-chat.handlers]
+            [pico-chat.websocket]
             [pico-chat.ajax :refer [load-interceptors!]]
             [pico-chat.views.navbar :refer [navbar]]
             [pico-chat.views.about :as about]
             [pico-chat.views.home :as home]
             [pico-chat.views.doc :as doc]
+            [mount.core :as mount]
             [ajax.core :refer [GET POST]])
   (:import goog.History))
 
@@ -60,4 +62,5 @@
   (load-interceptors!)
   (hook-browser-navigation!)
   (dispatch-sync [:initialise-db])
+  (mount/start)
   (mount-components))

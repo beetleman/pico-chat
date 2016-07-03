@@ -3,6 +3,8 @@
   (:require [reagent.core :as r]
             [pico-chat.logger :as logger]
             [pico-chat.events :as events]
+            [pico-chat.messages :as messages]
+            [pico-chat.users :as users]
             [cljs.core.async :refer [put! chan <! >! timeout]]
             [re-frame.core :refer [subscribe dispatch]]))
 
@@ -12,5 +14,10 @@
     (fn []
       [:div.container
        [:div.row
+        [:div.users.col.m4
+         [users/all]]
+        [:div.messages.col.m8
+         [messages/all]]]
+       [:div.row
         [:div.col.m12
-         [:h1 "Hello!"]]]])))
+         [messages/new]]]])))
