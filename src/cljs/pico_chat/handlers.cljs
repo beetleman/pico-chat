@@ -1,8 +1,14 @@
 (ns pico-chat.handlers
   (:require [ajax.core :refer [GET POST]]
-            [re-frame.core :refer [register-handler path trim-v after debug dispatch]]
+            [re-frame.core :refer [register-handler
+                                   path
+                                   trim-v
+                                   after
+                                   debug
+                                   dispatch]]
             [pico-chat.logger :as logger]
-            [pico-chat.db :refer [default-value]]))
+            [pico-chat.websocket :refer [sch]]
+            [pico-chat.db :refer [default-value add-message]]))
 
 
 ;; -- Helpers -----------------------------------------------------------------
@@ -35,3 +41,20 @@
  :doc-response-error
  (fn [db [_ response]]
    (assoc db :doc "")))
+
+
+;; -- msg
+(register-handler
+ :send-message
+ trim-v
+ (fn
+   [db [text]]
+   ((:send-fn @sch) [:chat/new-message {:text text}])
+   db))
+
+(register-handler
+ :recv-message
+ trim-v
+ (fn
+   [db [message]]
+   (add-message db message)))

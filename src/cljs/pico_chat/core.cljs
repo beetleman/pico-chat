@@ -1,7 +1,7 @@
 (ns pico-chat.core
   (:require [reagent.core :as r]
             [reagent.session :as session]
-            [re-frame.core :refer [dispatch-sync]]
+            [re-frame.core :refer [dispatch-sync dispatch]]
             [secretary.core :as secretary :include-macros true]
             [goog.events :as events]
             [goog.history.EventType :as HistoryEventType]

@@ -18,3 +18,9 @@
  :doc-html
  (fn [db _]
    (reaction (-> @db :doc md->html))))
+
+
+(register-sub
+ :messages
+ (fn [db _]
+   (reaction (:messages @db))))

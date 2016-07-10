@@ -1,5 +1,4 @@
 (defproject pico-chat "0.1.0-SNAPSHOT"
-
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
 
@@ -32,7 +31,8 @@
                  [org.clojure/tools.cli "0.3.5"]
                  [luminus-nrepl "0.1.4"]
                  [org.webjars/webjars-locator-jboss-vfs "0.1.0"]
-                 [luminus-immutant "0.2.0"]]
+                 [luminus-immutant "0.2.0"]
+                 [clj-time "0.12.0"]]
 
   :min-lein-version "2.0.0"
 

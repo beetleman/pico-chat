@@ -7,7 +7,7 @@
    [taoensso.sente  :as sente :refer (cb-success?)]
    [taoensso.encore :as encore :refer-macros (have have?)]
    [taoensso.timbre :as timbre :refer-macros (tracef debugf infof warnf errorf)]
-
+   [re-frame.core :refer [dispatch]]
    [mount.core :as mount]))
 
 
@@ -38,14 +38,17 @@
       (logger/info :new-conncection new-state-map)
       (logger/info :new-state new-state-map))))
 
-(defmethod -event-msg-handler :chsk/recv
-  [{:as ev-msg :keys [?data]}]
-  (logger/info :form-server ?data))
-
 (defmethod -event-msg-handler :chsk/handshake
   [{:as ev-msg :keys [?data]}]
   (let [[?uid ?csrf-token ?handshake-data] ?data]
     (logger/info :handshake ?data)))
+
+(defmethod -event-msg-handler :chsk/recv
+  [{:as ev-msg :keys [?data]}]
+  (let [[id data] ?data]
+    (condp = id
+      :chat/message (dispatch [:recv-message data])
+      (logger/info :recv ?data))))
 
 (mount/defstate ^{:on-reload :noop} router
   :start (sente/start-client-chsk-router!
