@@ -4,17 +4,19 @@
             [pico-chat.logger :as logger]))
 
 
-
 (defn new []
   (let [text (r/atom "")]
     (fn []
-      [:div
-       [:textarea {:value @text
-                   :onChange #(reset! text (.. % -target -value))}]
-       [:button.btn {:onClick (fn [_]
-                                (dispatch [:send-message @text])
-                                (reset! text ""))}
-        "Send"]])))
+      [:form {:onSubmit (fn [e]
+                          (.preventDefault e)
+                          (dispatch [:send-message @text])
+                          (reset! text ""))}
+       [:div.input-field
+        [:input {:value @text
+                 :type "text"
+                 :placeholder "Message"
+                 :onChange #(reset! text (.. % -target -value))}]]
+       [:button.btn "Send"]])))
 
 
 (defn one [{:keys [username text id]}]
