@@ -21,8 +21,8 @@
   (println "Unhandled event: " event))
 
 (defmethod event :chat/new-message [{:as ev-msg :keys [event uid ?data]}]
-  (messages/save ?data))
-
+  (when-not (-> ?data :text clojure.string/trim empty?)
+    (messages/save ?data)))
 
 (defn send-fn-all
   [sch args]
