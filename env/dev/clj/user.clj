@@ -16,3 +16,7 @@
 (defn restart-all []
   (restart)
   (restart-fw))
+
+(defn start-all []
+  (start)
+  (start-fw))

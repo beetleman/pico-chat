@@ -28,10 +28,12 @@
                  [com.taoensso/sente "1.9.0-RC1"]
                  [com.apa512/rethinkdb "0.15.24"]
                  [buddy "1.0.0"]
+                 [oauth-clj "0.1.15"]
                  [org.clojure/tools.cli "0.3.5"]
                  [luminus-nrepl "0.1.4"]
                  [org.webjars/webjars-locator-jboss-vfs "0.1.0"]
                  [luminus-immutant "0.2.0"]
+                 [com.andrewmcveigh/cljs-time "0.4.0"]
                  [clj-time "0.12.0"]]
 
   :min-lein-version "2.0.0"
