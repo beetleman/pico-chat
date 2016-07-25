@@ -1,9 +1,10 @@
-/target
+/target/cljsbuild
+/target/uberjar/*
+!/target/uberjar/pico-chat.jar 
 /lib
 /classes
 /checkouts
 pom.xml
-*.jar
 *.class
 /.lein-*
 profiles.clj
@@ -12,4 +13,3 @@ profiles.clj
 /log
 figwheel_server.log
 .volumes
-
