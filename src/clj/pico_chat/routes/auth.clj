@@ -8,4 +8,4 @@
 
 
 (defroutes auth-routes
-  (GET (:path auth/oauth-callback-uri) req (auth/oauth-callback req)))
+  (GET auth/google-callback-path req (auth/oauth-callback req)))

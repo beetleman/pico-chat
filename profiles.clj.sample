@@ -1,0 +1,14 @@
+{:profiles/dev
+ {:env {:rethink-host "127.0.0.1"
+        :rethink-port 28015
+        :rethink-db "pico_chat"
+        :google-client-id "144528828490-gv7on6ttvd6e2c56v5v5oachqpmg3u4t.apps.googleusercontent.com"
+        :google-client-secret "EqOALFpbfJA79WvtGnFbPpWU"
+        :domain-name "http://localhost:3000"}}
+ :profiles/test
+ {:env {:rethink-host "127.0.0.1"
+        :rethink-port 38015
+        :rethink-db "pico_chat"
+        :google-client-id "google-client-id"
+        :google-client-secret "google-client-secret"
+        :domain-name "http://localhost:3000"}}}

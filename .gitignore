@@ -1,6 +1,9 @@
+# clojure
 /target/cljsbuild
 /target/uberjar/*
-!/target/uberjar/pico-chat.jar 
+!/target/uberjar/pico-chat.jar
+target/base+system+user+dev+dev+repl
+target/figwheel_temp
 /lib
 /classes
 /checkouts
@@ -12,4 +15,7 @@ profiles.clj
 .nrepl-port
 /log
 figwheel_server.log
+
+# docker
+.env
 .volumes
