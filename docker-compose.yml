@@ -2,6 +2,7 @@ app:
   build: .
   ports:
     - "3000:3000"
+  env_file: .env
   environment:
     - RETHINK_HOST=rethinkdb
     - RETHINK_PORT=28015
