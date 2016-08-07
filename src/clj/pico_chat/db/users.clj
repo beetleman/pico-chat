@@ -1,4 +1,4 @@
-(ns pico-chat.db.messages
+(ns pico-chat.db.users
   (:require
    [rethinkdb.query :as r]
    [pico-chat.db.core :refer [conn]]
@@ -8,21 +8,23 @@
    [clj-time.coerce :as tc]))
 
 
-(utils/def-table messages conn)
+(utils/def-table users conn
+  (r/index-create "id" (r/fn [row]
+                            (r/get-field row :id))))
 
 
 (defn save
-  ([msg] (save msg conn))
-  ([msg conn]
-   (utils/save-item msg conn messages)))
+  ([user] (save user conn))
+  ([user conn]
+   (utils/save-item user conn users)))
 
 
 (defn get-all
   ([] (get-all conn))
   ([conn]
-   (utils/get-all-items conn messages)))
+   (utils/get-all-items conn users)))
 
 
 (defn changesfeed
   ([] (changesfeed conn))
-  ([conn] (utils/changesfeed conn messages)))
+  ([conn] (utils/changesfeed conn users)))
