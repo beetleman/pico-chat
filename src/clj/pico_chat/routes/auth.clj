@@ -8,4 +8,5 @@
 
 
 (defroutes auth-routes
-  (GET auth/google-callback-path req (auth/oauth-callback req)))
+  (GET auth/google-callback-path req (auth/oauth-callback req))
+  (GET "/logout" req (auth/logout req)))

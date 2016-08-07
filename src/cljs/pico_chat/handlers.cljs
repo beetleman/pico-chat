@@ -8,7 +8,7 @@
                                    dispatch]]
             [pico-chat.logger :as logger]
             [pico-chat.websocket :refer [sch]]
-            [pico-chat.db :refer [default-value add-message]]))
+            [pico-chat.db :refer [default-value add-message set-users]]))
 
 
 ;; -- Helpers -----------------------------------------------------------------
@@ -58,3 +58,11 @@
  (fn
    [db [message]]
    (add-message db message)))
+
+
+(register-handler
+ :recv-users
+ trim-v
+ (fn
+   [db [users]]
+   (set-users db users)))

@@ -10,12 +10,13 @@
 
 
 (defn page []
-  (let [messages (subscribe [:messages])]
+  (let [messages (subscribe [:messages])
+        users (subscribe [:users])]
     (fn []
       [:div.container
        [:div.row
         [:div.users.col.m4
-         [users/all]]
+         [users/all users]]
         [:div.messages.col.m8
          [messages/all messages]]]
        [:div.row

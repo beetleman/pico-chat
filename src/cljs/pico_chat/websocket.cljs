@@ -48,6 +48,7 @@
   (let [[id data] ?data]
     (condp = id
       :chat/message (dispatch [:recv-message data])
+      :chat/users (dispatch [:recv-users data])
       (logger/info :recv ?data))))
 
 (mount/defstate ^{:on-reload :noop} router

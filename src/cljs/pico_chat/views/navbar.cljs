@@ -8,6 +8,9 @@
    {:class (when (= page (session/get :page)) "active")}
    [:a {:href uri} title]])
 
+(defn logout-link []
+  [:li [:a {:href "/logout"} "Logout"]])
+
 (defn navbar []
   [:div.navbar-fixed
    [:nav
@@ -15,4 +18,5 @@
      [:a.brand-logo {:href "#/"} "pico-chat"]
      [:ul.right.hide-on-med-and-down
       [nav-link "#/doc" "Doc" :doc]
-      [nav-link "#/about" "About" :about]]]]])
+      [nav-link "#/about" "About" :about]
+      [logout-link]]]]])

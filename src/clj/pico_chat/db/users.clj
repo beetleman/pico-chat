@@ -8,9 +8,7 @@
    [clj-time.coerce :as tc]))
 
 
-(utils/def-table users conn
-  (r/index-create "id" (r/fn [row]
-                            (r/get-field row :id))))
+(utils/def-table users conn)
 
 
 (defn save
@@ -18,11 +16,30 @@
   ([user conn]
    (utils/save-item user conn users)))
 
+(defn save-or-update
+  ([user] (save user conn))
+  ([user conn]
+   (utils/save-or-update-item user conn users)))
+
+(defn get-by-id
+  ([id] (get-by-id id conn))
+  ([id conn]
+   (-> (r/table users)
+       (r/get (str id))
+       (r/run conn))))
 
 (defn get-all
   ([] (get-all conn))
   ([conn]
    (utils/get-all-items conn users)))
+
+
+(defn filter-by-ids
+  ([ids] (filter-by-ids ids conn))
+  ([ids conn]
+   (-> (r/table users)
+       (r/get-all (map str ids) {})
+       (r/run conn))))
 
 
 (defn changesfeed

@@ -24,3 +24,8 @@
  :messages
  (fn [db _]
    (reaction (:messages @db))))
+
+(register-sub
+ :users
+ (fn [db _]
+   (reaction (:users @db))))

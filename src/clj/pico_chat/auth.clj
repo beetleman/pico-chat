@@ -2,6 +2,7 @@
   (:require [oauth.google :as google]
             [buddy.auth :refer [authenticated? throw-unauthorized]]
             [pico-chat.config :refer [env]]
+            [pico-chat.db.users :as users]
             [mount.core :refer [defstate]]
             [ring.util.response :as resp]))
 
@@ -32,9 +33,17 @@
 
 (defn oauth-callback [req]
   (if-let [token (req->token req)]
-    (-> (resp/redirect "/")
-        (assoc-in [:session :identity] token))
+    (let [user-data (get-user token)]
+      (users/save-or-update user-data)
+      (-> (resp/redirect "/")
+          (assoc-in [:session :token] token)
+          (assoc-in [:session :identity] user-data)))
     (throw-unauthorized {:message "Wrong code"})))
+
+(defn logout [req]
+  (-> (resp/redirect "/")
+      (update-in [:session] dissoc :token)
+      (update-in [:session] dissoc :identity)))
 
 (defn redirect-to-provider []
   (resp/redirect (google-auth-uri env)))
