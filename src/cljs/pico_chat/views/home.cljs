@@ -9,16 +9,24 @@
             [re-frame.core :refer [subscribe dispatch]]))
 
 
+(defn scroll-down-fn [el]
+  (fn [& _]
+    (when-let [el @el]
+      (aset el "scrollTop" (aget el "scrollHeight")))))
+
+
 (defn page []
   (let [messages (subscribe [:messages])
+        message-container (r/atom nil)
         users (subscribe [:users])]
     (fn []
       [:div.container
-       [:div.row
-        [:div.users.col.m4
+       [:div.row.expand
+        [:div.col.m4.users-container
          [users/all users]]
-        [:div.messages.col.m8
-         [messages/all messages]]]
-       [:div.row
-        [:div.col.m12
+        [:div.col.m8.messages-container
+         {:ref #(reset! message-container %)}
+         [messages/all messages (scroll-down-fn message-container)]]]
+       [:div.row.fixed
+        [:div.col.m12.new-message-container
          [messages/new]]]])))

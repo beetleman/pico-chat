@@ -1,40 +1,52 @@
+html {
+  height: 100%; }
+  html body {
+    height: 100%; }
+
 #app {
-  margin-top: 30px; }
-
-@media (min-width: 34em) {
-  .navbar-brand {
-    float: left; }
-  .navbar-nav .nav-item {
-    float: left; }
-  .navbar-divider,
-  .navbar-nav .nav-item + .nav-item,
-  .navbar-nav .nav-link + .nav-link {
-    margin-left: 1rem; } }
-
-@-moz-keyframes three-quarters-loader {
-  0% {
-    -moz-transform: rotate(0deg);
-    transform: rotate(0deg); }
-  100% {
-    -moz-transform: rotate(360deg);
-    transform: rotate(360deg); } }
-
-@-webkit-keyframes three-quarters-loader {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg); }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg); } }
-
-@keyframes three-quarters-loader {
-  0% {
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg); }
-  100% {
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg); } }
+  height: 100%;
+  min-height: 300px;
+  padding-top: 64px;
+  margin-top: -64px;
+  position: relative; }
+  #app .container {
+    height: 100%; }
+    @media (min-width: 34em) {
+      #app .container .navbar-brand {
+        float: left; }
+      #app .container .navbar-nav .nav-item {
+        float: left; }
+      #app .container .navbar-divider,
+      #app .container .navbar-nav .nav-item + .nav-item,
+      #app .container .navbar-nav .nav-link + .nav-link {
+        margin-left: 1rem; } }
+    #app .container > .expand {
+      height: 100%;
+      padding-bottom: 130px;
+      margin-bottom: -130px; }
+    #app .container > .fixed {
+      height: 130px;
+      margin-bottom: 0px; }
+    #app .container .messages-container {
+      height: 100%;
+      overflow-y: scroll; }
+      #app .container .messages-container .message {
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px;
+        box-shadow: 0px 0px 20px #888888; }
+    #app .container .new-message-container {
+      box-shadow: 0px -3px 10px #888888;
+      height: 130px; }
+      #app .container .new-message-container .new-message {
+        height: 115px; }
+    #app .container .users-container {
+      height: 100%;
+      overflow-y: scroll;
+      box-shadow: 3px 0px 10px #888888; }
+      #app .container .users-container .users {
+        min-height: 100%; }
+        #app .container .users-container .users .user {
+          border-bottom: solid 1px #888888; }
+          #app .container .users-container .users .user:hover {
+            background-color: #D8D8D8; }

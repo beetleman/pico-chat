@@ -1,54 +1,78 @@
+$shadow-color: #888888;
+$hover-color: #D8D8D8;
+$nav-bar-height: 64px;
+$new-message-heigh: 130px;
+
+html {
+  height: 100%;
+  body {
+    height: 100%;
+  }
+}
+
 #app {
-  margin-top: 30px;
-}
+  height: 100%;
+  min-height: 300px;
+  padding-top: $nav-bar-height;
+  margin-top: -$nav-bar-height;
+  position: relative;
 
-@media (min-width: 34em) {
-  .navbar-brand {
-    float: left;
+  .container {
+    height: 100%;
+
+    @media (min-width: 34em) {
+      .navbar-brand {
+        float: left;
+      }
+      .navbar-nav .nav-item {
+        float: left;
+      }
+      .navbar-divider,
+      .navbar-nav .nav-item+.nav-item,
+      .navbar-nav .nav-link + .nav-link {
+        margin-left: 1rem;
+      }
+    }
+    &>.expand {
+      height: 100%;
+      padding-bottom: $new-message-heigh;
+      margin-bottom: -$new-message-heigh;
+
+    }
+    &>.fixed {
+      height: $new-message-heigh;
+      margin-bottom: 0px;
+    }
+    .messages-container {
+      height: 100%;
+      overflow-y: scroll;
+      .message {
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px;
+        box-shadow: 0px 0px 20px $shadow-color;
+      }
+    }
+    .new-message-container {
+      box-shadow: 0px -3px 10px $shadow-color;
+      height: $new-message-heigh;
+      .new-message {
+        height: $new-message-heigh - 15px;
+      }
+    }
+    .users-container {
+      height: 100%;
+      overflow-y: scroll;
+      box-shadow: 3px 0px 10px $shadow-color;
+      .users {
+        min-height: 100%;
+        .user {
+          border-bottom: solid 1px $shadow-color;
+          &:hover {
+            background-color: $hover-color;
+          }
+        }
+      }
+    }
   }
-  .navbar-nav .nav-item {
-    float: left;
-  }
-  .navbar-divider,
-  .navbar-nav .nav-item+.nav-item,
-  .navbar-nav .nav-link + .nav-link {
-    margin-left: 1rem;
-  }
-}
-
-@-moz-keyframes three-quarters-loader {
-    0% {
-        -moz-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -moz-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
-}
-
-@-webkit-keyframes three-quarters-loader {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes three-quarters-loader {
-    0% {
-        -moz-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -moz-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
 }

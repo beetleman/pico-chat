@@ -1,6 +1,6 @@
 (defproject pico-chat "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :description "Simple chat app"
+  :url "https://pico-chat.zarobaczony.pl"
 
   :dependencies [[luminus-log4j "0.1.3"]
                  [cljs-ajax "0.5.8"]
