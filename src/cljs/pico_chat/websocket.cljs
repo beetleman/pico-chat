@@ -41,6 +41,7 @@
 (defmethod -event-msg-handler :chsk/handshake
   [{:as ev-msg :keys [?data]}]
   (let [[?uid ?csrf-token ?handshake-data] ?data]
+    (dispatch [:recv-messages (nth ?data 2)])
     (logger/info :handshake ?data)))
 
 (defmethod -event-msg-handler :chsk/recv

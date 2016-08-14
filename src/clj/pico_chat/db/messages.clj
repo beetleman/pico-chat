@@ -30,7 +30,11 @@
 (defn get-all
   ([] (get-all conn))
   ([conn]
-   (utils/get-all-items conn messages)))
+   (-> (r/table messages)
+       (r/merge (r/fn [msg]
+                  {:user (-> (r/table users/users)
+                             (r/get (r/get-field msg :user_id)))}))
+       (r/run conn))))
 
 
 (defn changesfeed

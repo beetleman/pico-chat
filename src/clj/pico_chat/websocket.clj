@@ -11,10 +11,13 @@
 
 
 (declare user-id-fn)
+(declare handshake-data-fn)
+(declare send-fn-all)
 
 (mount/defstate ^{:on-reload :noop} sch
   :start (sente/make-channel-socket! (get-sch-adapter)
-                                     {:user-id-fn user-id-fn}))
+                                     {:user-id-fn user-id-fn
+                                      :handshake-data-fn handshake-data-fn}))
 
 (defn user-id-fn [ring-req]
   (get-in ring-req [:session :identity :id]))
@@ -22,12 +25,14 @@
 (defmulti event :id)
 
 (defmethod event :default [{:as ev-msg :keys [event id uid]}]
-  (println "Unhandled event: " uid " " (get-in ev-msg [:ring-req :session :identity])))
+  (println "Unhandled event: " id " " uid))
 
 (defmethod event :chat/new-message [{:as ev-msg :keys [event uid ?data]}]
   (when-not (-> ?data :text clojure.string/trim empty?)
     (messages/save (assoc ?data :user_id uid))))
 
+(defn handshake-data-fn [req]
+  (messages/get-all))
 
 (defn send-fn-all
   [sch args]

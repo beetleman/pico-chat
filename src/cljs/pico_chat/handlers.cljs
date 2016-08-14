@@ -8,7 +8,7 @@
                                    dispatch]]
             [pico-chat.logger :as logger]
             [pico-chat.websocket :refer [sch]]
-            [pico-chat.db :refer [default-value add-message set-users]]))
+            [pico-chat.db :as d]))
 
 
 ;; -- Helpers -----------------------------------------------------------------
@@ -19,7 +19,7 @@
 (register-handler
  :initialise-db
  (fn [_ _]
-   default-value))  ;; all hail the new state
+   d/default-value))  ;; all hail the new state
 
 
 ;; -- doc
@@ -57,7 +57,15 @@
  trim-v
  (fn
    [db [message]]
-   (add-message db message)))
+   (d/add-message db message)))
+
+
+(register-handler
+ :recv-messages
+ trim-v
+ (fn
+   [db [message]]
+   (d/add-messages db message)))
 
 
 (register-handler
@@ -65,4 +73,4 @@
  trim-v
  (fn
    [db [users]]
-   (set-users db users)))
+   (d/set-users db users)))
