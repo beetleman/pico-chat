@@ -19,3 +19,7 @@
   :start (when-not (utils/db-exist? conn (env :rethink-db))
            (-> (r/db-create (env :rethink-db))
                (r/run conn))))
+
+;; (defn drop-db []
+;;   (-> (r/db-drop (env :rethink-db))
+;;       (r/run conn)))

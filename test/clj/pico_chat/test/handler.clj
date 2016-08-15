@@ -3,10 +3,21 @@
             [ring.mock.request :refer :all]
             [pico-chat.handler :refer :all]))
 
+
 (deftest test-app
-  (testing "main route"
+  (testing "main route without credential"
     (let [response ((app) (request :get "/"))]
-      (is (= 200 (:status response)))))
+      (is (= 302 (:status response)))
+      (is (clojure.string/starts-with?
+           (get-in response [:headers "Location"])
+           "https://accounts.google.com/o/oauth2/auth"))))
+
+  (testing "logout route"
+    (let [response ((app) (request :get "/logout"))]
+      (is (= 302 (:status response)))
+      (is (=
+           "http://localhost/"
+           (get-in response [:headers "Location"])))))
 
   (testing "not-found route"
     (let [response ((app) (request :get "/invalid"))]

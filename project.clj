@@ -120,7 +120,7 @@
                                  [binaryage/devtools "0.7.2"]
                                  [figwheel-sidecar "0.5.4-5"]
                                  [com.cemerick/piggieback "0.2.2-SNAPSHOT"]]
-                  :plugins      [[com.jakemccrary/lein-test-refresh "0.14.0"]
+                  :plugins      [[com.jakemccrary/lein-test-refresh "0.16.0"]
                                  [lein-doo "0.1.6"]
                                  [lein-figwheel "0.5.4-5"]
                                  [org.clojure/clojurescript "1.9.93"]]
