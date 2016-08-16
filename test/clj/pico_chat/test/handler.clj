@@ -1,7 +1,11 @@
 (ns pico-chat.test.handler
   (:require [clojure.test :refer :all]
             [ring.mock.request :refer :all]
-            [pico-chat.handler :refer :all]))
+            [pico-chat.handler :refer :all]
+            [pico-chat.test.fixtures :refer [db-fixture]]))
+
+
+(use-fixtures :each db-fixture)
 
 
 (deftest test-app
