@@ -13,7 +13,7 @@
   :start ((or (:init defaults) identity))
   :stop  ((or (:stop defaults) identity)))
 
-(def app-routes
+(defn app-routes-creator []
   (routes
    (->
     #'chat-routes
@@ -30,4 +30,6 @@
                   :title "page not found"})))))
 
 
-(defn app [] (middleware/wrap-base #'app-routes))
+(defn app []
+  (let [app-routes (app-routes-creator)]
+    (middleware/wrap-base app-routes)))

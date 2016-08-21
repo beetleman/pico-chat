@@ -2,6 +2,8 @@
   (:require [clojure.test :refer :all]
             [ring.mock.request :refer :all]
             [pico-chat.handler :refer :all]
+            [buddy.auth :as auth]
+            [clojure.string :as str]
             [pico-chat.test.fixtures :refer [db-fixture]]))
 
 
@@ -12,9 +14,16 @@
   (testing "main route without credential"
     (let [response ((app) (request :get "/"))]
       (is (= 302 (:status response)))
-      (is (clojure.string/starts-with?
+      (is (str/starts-with?
            (get-in response [:headers "Location"])
            "https://accounts.google.com/o/oauth2/auth"))))
+
+  (testing "main route with credential"
+    (with-redefs-fn {#'auth/authenticated? (fn [r] true)}
+      #(let [response ((app) (request :get "/"))]
+         (is (= 200 (:status response)))
+         (is (str/includes? (:body response)
+                            "<title>Welcome to pico-chat</title>")))))
 
   (testing "logout route"
     (let [response ((app) (request :get "/logout"))]
