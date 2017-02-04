@@ -10,11 +10,18 @@ You will need [Leiningen][1] 2.0 or above installed.
 
 [1]: https://github.com/technomancy/leiningen
 
-## Running
+## Running develop
+Copy sample profile file before first run:
+
+    cp ./profiles.clj.sample ./profiles.clj
 
 To start a web server for the application, run:
 
     lein run
+
+
+## Build production image
+
 
 ## License
 

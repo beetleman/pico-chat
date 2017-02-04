@@ -9,18 +9,18 @@
 (def google-callback-path "/oauth2callback")
 
 (defn google-auth-uri [{:keys [google-client-id google-client-secret
-                               google-callback-domain-name]}]
+                               domain-name]}]
   (google/oauth-authorization-url google-client-id
-                                  (str google-callback-domain-name
+                                  (str domain-name
                                        google-callback-path)))
 
 
 (defn get-token [code {:keys [google-client-id google-client-secret
-                              google-callback-domain-name]}]
+                              domain-name]}]
   (google/oauth-access-token google-client-id
                              google-client-secret
                              code
-                             (str google-callback-domain-name
+                             (str domain-name
                                   google-callback-path)))
 
 (defn get-user [token]
